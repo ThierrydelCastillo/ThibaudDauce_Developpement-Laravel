@@ -14,8 +14,8 @@ class ShowArticleTest extends TestCase
     {
         
         $this->withoutExceptionHandling(); // Affiche les erreurs dans le retour de PHPUnit
+        Storage::fake('local');
 
-        // ETAPE CREATION DU MONDE: QUELLE SONT LES DATA NECESSAIRE AU TEST
         $content = <<<EOT
 ---
 title: My title

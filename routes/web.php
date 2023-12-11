@@ -18,4 +18,5 @@
 
 Route::get('/', 'HomepageController@index');
 
+Route::get('articles/{channel}', 'ChannelsController@show');
 Route::get('articles/{channel}/{slug}.html', 'ArticlesController@show');
