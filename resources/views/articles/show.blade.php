@@ -1,6 +1,6 @@
-<h1>{{ $title }}</h1>
+<h1>{{ $article->title() }}</h1>
 
-<iframe src="{{ $youtube}}" frameborder="0"></iframe>
+<iframe src="{{ $article->youtube() }}" frameborder="0"></iframe>
 
 
-{!! $content !!}
+{!! $article->html() !!}

@@ -1,7 +1,7 @@
-@foreach ($articles as $article)
-    <h1>{{ $article['title'] }}</h1>
+@foreach ($channel->articles() as $article)
+    <h1>{{ $article->title() }}</h1>
 
-    <iframe src="{{ $article['youtube'] }}" frameborder="0"></iframe>
+    <iframe src="{{ $article->youtube() }}" frameborder="0"></iframe>
 
-    <a href="{{ $article['url']}}">Lire +</a>
+    <a href="{{ $article->url() }}">Lire +</a>
 @endforeach

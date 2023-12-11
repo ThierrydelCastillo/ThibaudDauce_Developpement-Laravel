@@ -2,26 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Article;
 use Illuminate\Support\Facades\Storage;
 
 class ArticlesController extends Controller
 {
-    public function show($channel, $slug)
+    public function show($channelSlug, $articleSlug)
     {
-        $content = Storage::get("articles/{$channel}/{$slug}.md");
-
-        $parser = new \Mni\FrontYAML\Parser;
-
-        $document = $parser->parse($content);
-
-        $yaml = $document->getYAML();
-        $html = $document->getContent();
+        $article = new Article("articles/$channelSlug/$articleSlug.md");
 
         return view('articles.show', [
-            'title' => $yaml['title'],
-            'youtube' => $yaml['youtube'],
-            'content' => $html,
+            'article' => $article,
         ]);
     }
 }

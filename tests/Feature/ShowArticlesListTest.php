@@ -13,7 +13,7 @@ class ShowArticlesListTest extends TestCase
     function it_show_a_list_articles()
     {
         
-        // $this->withoutExceptionHandling(); // Affiche les erreurs dans le retour de PHPUnit
+        $this->withoutExceptionHandling(); // Affiche les erreurs dans le retour de PHPUnit
         Storage::fake('local');
 
         $content = <<<EOT

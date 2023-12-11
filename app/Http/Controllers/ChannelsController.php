@@ -2,33 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use App\Channel;
 
 class ChannelsController extends Controller
 {
-    public function show($channel)
+    public function show($slug)
     {
-        $parser = new \Mni\FrontYAML\Parser;
-        $files = Storage::allFiles("articles/{$channel}");
-        $articles = [];
-       
-        foreach($files as $file) {
-            $content = Storage::get($file);
-
-            $document = $parser->parse($content);
-
-            $yaml = $document->getYAML();
-
-            $articles[] = [
-                'title' => $yaml['title'],
-                'youtube' => $yaml['youtube'],
-                'url' => url(str_replace('.md', '.html', $file)),
-            ];
-        }
+        $channel = new Channel($slug);
 
         return view('channels.show', [
-            'articles' => $articles,
+            'channel' => $channel,
         ]);
     }
 }
