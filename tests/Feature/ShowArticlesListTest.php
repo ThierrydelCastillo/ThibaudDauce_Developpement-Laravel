@@ -38,7 +38,6 @@ youtube: https://www.youtube.com/embed/second
 EOT;
         Storage::put('articles/decouverte/2018-01-01-test-2.md', $content);
 
-
         $this->get('articles/decouverte')
             ->assertSuccessful()
             ->assertSee('My first title')
@@ -47,5 +46,12 @@ EOT;
             ->assertSee('src="https://www.youtube.com/embed/second"')
             ->assertSee(url("articles/decouverte/2018-01-01-test-1.html"))
             ->assertSee(url("articles/decouverte/2018-01-01-test-2.html"));
+    }
+        
+    /** @test */
+    function it_return_a_404_when_channel_does_not_exist()
+    {
+        $this->get('articles/unknow')
+                ->assertStatus(404);
     }
 }

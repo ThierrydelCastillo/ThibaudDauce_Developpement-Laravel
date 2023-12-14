@@ -36,4 +36,12 @@ EOT;
 
         // ETAPE VERIFICATION
     }
+
+    /** @test */
+    function it_return_a_404_if_the_article_does_not_exist()
+    {
+        $this->get("articles/decouverte/2018-01-01-unknow.html")
+            ->assertStatus(404);
+    }
+
 }

@@ -10,6 +10,8 @@ class Article
     public $document;
     public function __construct($path)
     {
+        abort_unless(Storage::exists($path), 404);
+
         $this->path = $path;
         $this->document = (new Parser)->parse(Storage::get($path));
     }
